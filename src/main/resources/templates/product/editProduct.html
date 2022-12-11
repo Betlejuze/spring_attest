@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style/edit.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/edit.css}">
+</head>
+<div>
+    <h3>Редактирование товаров</h3>
+</div>
+<form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${product.getId()})}" th:object="${product}">
+    <label class="icon4" for="title">Введите наименование товара: </label>
+    <input class="icon2" type="text" th:field="*{title}" placeholder="Наименование" id="title">
+    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+
+    <label class="icon4" for="description">Введите описание товара: </label>
+    <textarea class="icon2" th:field="*{description}" placeholder="Описание" id="description"></textarea>
+    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+    <label class="icon4" for="price">Введите цену товара: </label>
+    <input class="icon2"  type="number" th:field="*{price}" min="1" step="0.00" id="price">
+    <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+
+    <label class="icon4" for="warehouse">Введите склад: </label>
+    <input class="icon2" type="text" th:field="*{warehouse}" placeholder="Склад" id="warehouse">
+    <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+
+    <label class="icon4" for="seller">Введите данные о продавце: </label>
+    <textarea class="icon2" th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
+    <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
+
+    <label class="icon4" for="category">Введите категорию товара: </label>
+    <select name="category" th:field="*{category}" id="category">
+        <div th:each="element : ${category}">
+            <option th:text="${element.getName()}" th:value="${element.getId()}"></option>
+        </div>
+    </select>
+    <input class="icon3" type="submit" value="Редактировать">
+</form>
+</body>
+</html>

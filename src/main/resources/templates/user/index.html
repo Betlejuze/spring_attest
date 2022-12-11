@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+<div>
+
+    <h3>Мой Франкен</h3>
+    <hr>
+
+</div>
+<div class="header">
+
+    <div>
+        <form method="post" th:action="@{/logout}">
+            <input class="icon" type="submit" value="Выйти из личного кабинета">
+        </form>
+    </div>
+    <div>
+        <form method="get" th:action="@{/cart}">
+            <input  class="icon" type="submit" value="Корзина">
+        </form>
+    </div>
+    <div>
+        <form method="get" th:action="@{/orders}">
+            <input class="icon" type="submit" value="История заказов">
+        </form>
+    </div>
+</div>
+    <div>
+        <form th:method="POST" th:action="@{/product/search}">
+    <fieldset>
+        <legend>Выберите параметр сортировки: </legend>
+        <br>
+        <label for="search">Поиск по наименованию</label>
+        <input class="icon2" name="search" id="search">
+        <br>
+        <p>Цена, ₽</p>
+        <label for="ot">От</label>
+        <input class="icon2" type="text" name="ot" id="ot">
+        <label for="do">До</label>
+        <input class="icon2" type="text" name="do" id="do">
+        <br>
+        <br>
+        <div>
+            <label for="ascending_price">Отсортировать по возрастанию цены</label>
+            <input class="icon2" type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+            <br>
+            <br>
+            <label for="descending_price">Отсортировать по убыванию цены</label>
+            <input class="icon2" type="radio" id="descending_price" name="price" value="sorted_by_descending_price">
+            <p>Категория товаров: </p>
+            <label for="furniture">Котики</label>
+            <input class="icon2" type="radio" id="furniture" name="contact" value="furniture">
+            <label for="appliances">Собачки</label>
+            <input class="icon2" type="radio" id="appliances" name="contact" value="appliances">
+            <label for="clothes">Птички</label>
+            <input class="icon2" type="radio" id="clothes" name="contact" value="clothes">
+            <br>
+            <br>
+            <input class="icon2" type="submit" value="Найти">
+        </div>
+    </fieldset>
+    <br>
+    </form>
+</div>
+<div>
+    <h3>Доступные товары: </h3>
+    <hr>
+    <div th:each="product : ${products}">
+        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+        <br>
+        <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+        <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+        <a class="a" th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

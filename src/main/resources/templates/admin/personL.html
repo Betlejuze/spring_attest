@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пользователи</title>
+    <link rel="stylesheet" type="text/css" href="/">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/card.css}">
+</head>
+<body>
+<h3>Пользователи</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Логин</th>
+        <th>Пароль</th>
+        <th>Роль</th>
+        <th></th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.getLogin()}" ></td>
+        <td th:text="${person.getPassword()}"> </td>
+        <td th:text="${person.getRole()}"> </td>
+        <td> <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редакт</a> </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a href="/admin">Выход</a>
+</div>
+</body>
+</html>

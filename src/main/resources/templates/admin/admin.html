@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет администратора</title>
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}">
+</head>
+<body>
+<div>
+    <h3 class="one">Личный кабинет администратора</h3>
+    <form method="post" th:action="@{/logout}">
+        <input class="two" type="submit" value="Выйти из личного кабинета">
+    </form>
+    <div class="three">
+    <a class="two" href="admin/product/add">Добавить товар</a>
+    </div>
+    <div class="three">
+        <a class="two" href="admin/person">Пользователи</a>
+    </div>
+    <hr>
+    <div class="four" th:each="product : ${products}">
+        <p class="thee" th:text="'Наименование: ' + ${product.getTitle()}"></p>
+        <p class="thee" th:text="'Описание: ' + ${product.getDescription()}"></p>
+        <p class="thee" th:text="'Цена: ' + ${product.getPrice()}"></p>
+        <p class="thee" th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+        <p class="thee" th:text="'Продавец: ' + ${product.getSeller()}"></p>
+        <p class="thee" th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+        <a class="five" th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
+        <a class="five" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

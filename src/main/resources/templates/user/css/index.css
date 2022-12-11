@@ -1,0 +1,73 @@
+body{
+    display: grid;
+    margin: 50px;
+    background: #d3d3d3;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+h3{
+    font-size: 60px;
+    text-align: center;
+    font-style: oblique;
+    text-decoration: underline;
+
+}
+
+hr
+{margin: 20px 0;
+    padding: 0;
+    height: 0;
+    border: none;
+    border-top: 2px dotted #ddd;}
+
+.header{
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    justify-items: center;
+    padding-top: 10px;
+    border: 5px;
+}
+.icon{
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #b57e10 inset, 0 0 0 0 #b57e10;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
+}
+
+.icon:hover {
+    box-shadow: 0 0 10px 0 #b57e10 inset, 0 0 10px 4px #b57e10;
+    color: #b57e10;
+}
+
+fieldset{
+    border-radius: 20px;
+    border-color: #b57e10;
+    margin: auto;
+
+}
+.icon2{
+    border-radius: 5px;
+    background-color: #b57e10;
+
+}
+
+.a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #b57e10 inset, 0 0 0 0 #b57e10;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
+}

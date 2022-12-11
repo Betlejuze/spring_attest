@@ -1,0 +1,14 @@
+body{
+    display: grid;
+    margin: 50px;
+    background: #d3d3d3;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+h3{
+    font-size: 60px;
+    text-align: center;
+    font-style: oblique;
+    text-decoration: underline;
+
+}

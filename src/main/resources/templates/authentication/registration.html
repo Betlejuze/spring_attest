@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/regi.css}">
+    <link rel="stylesheet" type="text/css" href="style/regi.css">
+</head>
+<body>
+<div class="login">
+    <div>
+        <h3 class="active">Регистрация</h3>
+    </div>
+    <form method="post" th:action="@{/authentication/registration}" th:object="${person}">
+        <label class="name"  for="username">Введите логин: </label><br>
+        <input class="text" type="text" th:field="*{login}" placeholder="Введите ваш логин" name="username" id="username">
+        <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+        <br>
+        <label class="name" for="password">Введите пароль: </label>
+        <br>
+        <input class="text" type="password" th:field="*{password}" placeholder="Введите ваш пароль" name="password" id="password">
+        <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <br>
+        <input class="signin"  type="submit" value="Зарегистрироваться">
+        <div th:if="${param.error}" style="color: red">
+            Неправильный логин или пароль
+        </div>
+    </form>
+    <a href="/authentication/login">Авторизация</a>
+</div>
+</body>
+</html>
